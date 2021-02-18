@@ -9,6 +9,7 @@ In many quantum algorithms, similar processes are repeated, which appear as recu
 
 ## Getting Started
 See a [turorial](https://github.com/UTokyo-ICEPP/aqcel/blob/main/demo/tutorial.ipynb). We support following types of gates : X, Y, Z, H, RX, RY, RZ, U1, U2, U3, SX, SXdg, T, Tdg, C(X,Y,Z,H,RX,RY,RZ,U1,U2,U3,SX), TOFFOLI, MCU.
+AQCEL can optimize circuits by using a quantum computer, but this will be available in the future.
 
 ## Paper
 You can see details of AQCEL in [arXiv : ]().
