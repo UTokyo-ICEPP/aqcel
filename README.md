@@ -12,4 +12,4 @@ See a [turorial](https://github.com/UTokyo-ICEPP/aqcel/blob/main/demo/tutorial.i
 AQCEL can optimize circuits by using a quantum computer, but this will be available in the future.
 
 ## Paper
-You can see details of AQCEL in [arXiv : ](https://arxiv.org/abs/2102.10008).
+You can see details of AQCEL in [arXiv : 2102.10008](https://arxiv.org/abs/2102.10008).
