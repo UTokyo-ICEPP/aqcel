@@ -186,7 +186,11 @@
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
+<<<<<<< HEAD
    Copyright 2021 International Center for Elementary Particle Physics
+=======
+   Copyright 2021 Wonho Jang, Koji Terashi, Masahiko Saito, Christian W. Bauer, Benjamin Nachman, Yutaro Iiyama, Tomoe Kishimoto, Ryunosuke Okubo, Ryu Sawada, and Junichi Tanaka
+>>>>>>> 0fc7ea706631e0a04443334c229b5ed63ed613dd
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
