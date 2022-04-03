@@ -5,7 +5,6 @@ from qiskit.circuit.library.standard_gates import XGate
 from .....pass_manager import pass_manager
 from .....compiler.transpiler import transpiler
 
-# Support : All gates except "barrier and RCCX"
 # ある制御ゲートを対象にしたときに、時系列上ではそれと同等のゲートも作用させたくない（エラーを増やしてしまう。）
 # 実機を使って測定するときに、ancillaは|0>に戻すわけだからresetを途中まで適用することはできないか？
 # 分解する前もしくは後にMillerの作業ビットを用いた重複ビット制御削除の導入。
