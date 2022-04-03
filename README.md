@@ -8,5 +8,7 @@ There is a case where a quantum circuit has been desigined with complete general
 See a [turorial](https://github.com/UTokyo-ICEPP/aqcel/blob/main/tutorial_aqcel.ipynb). We support following types of gates : X, Y, Z, H, RX, RY, RZ, U1, U2, U3, SX, SXdg, T, Tdg, C(X,Y,Z,H,RX,RY,RZ,U1,U2,U3,SX), TOFFOLI, MCU.
 AQCEL optimizes quantum circuits by using a quantum computer for polynomial computational resources, however we support demo ideal test using a classical simulation.
 
+※ Some quantum gates cannot be supported in this version. We are trying to fix this bug.
+
 ## Paper
 You can see details of AQCEL in [arXiv : 2102.10008](https://arxiv.org/abs/2102.10008).
