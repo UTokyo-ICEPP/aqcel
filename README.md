@@ -11,14 +11,16 @@ The AQCEL-optimized circuit can produce equivalent final states with a much smal
 ## Getting Started
 See a [tutorial](https://github.com/UTokyo-ICEPP/aqcel/blob/main/tutorial_aqcel.ipynb).
 
-You must install qiskit=='0.32.1' for using this module. We will try update our codes for the latest version of Qiskit.
+This code is adapted to the following environment.
 
-AQCEL optimizes quantum circuits by using a quantum computer for polynomial computational resources, however we support demo ideal test using a classical simulation.
-
-※ Some quantum gates cannot be supported in this version. We are trying to fix it.
+| qiskit | qiskit-ibm-runtime | qiskit-aer | mthree |
+| ------ | ------------------ | ---------- | -------|
+| 2.3.0  | 0.45.0             | 0.17.2     | 3.0.0  |
 
 
 ## Papers
-The paper was published in [Quantum](https://doi.org/10.22331/q-2022-09-08-798). ([arXiv : 2209.02322](https://doi.org/10.48550/arXiv.2209.02322))
+The state label manager and redundant CX-pair removal are described in [arXiv:2509.04761](https://doi.org/10.48550/arXiv.2509.04761)
+
+The core part of AQCEL is summarized in this paper: [Quantum](https://doi.org/10.22331/q-2022-09-08-798). ([arXiv : 2209.02322](https://doi.org/10.48550/arXiv.2209.02322))
 
 The proceeding was published in [EPJ Web of Conferences](https://doi.org/10.1051/epjconf/202125103023). ([arXiv : 2102.10008](https://doi.org/10.48550/arXiv.2102.10008))
