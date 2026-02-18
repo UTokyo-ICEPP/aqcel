@@ -47,7 +47,7 @@ def Phat_phi(t):
 def Delta_f(t, g):
     return math.exp(P_f(t,g))
 
-def runQuantum(gLR,dophisplit):
+def runQuantum1(gLR,dophisplit):
 
     # coupling constants
     gp = math.sqrt(abs((gL - gR)**2 + 4 * gLR * gLR ))
@@ -122,6 +122,7 @@ def runQuantum(gLR,dophisplit):
         Cnx(qc,3,qcount,cCount2,b[0])
         
         # decide emission
+        print(f'Delta_f(low) = {Delta_f(t_low, gA)}, Delta_f(up) = {Delta_f(t_up, gA)}')
         delta1 = math.sqrt(Delta_f(t_low, gA)) / math.sqrt(Delta_f(t_up, gA))
         delta2 = math.sqrt(Delta_f(t_low, gB)) / math.sqrt(Delta_f(t_up, gA))
         qc.cry(2*np.arccos(delta1),a[0],e[0])
@@ -169,7 +170,8 @@ def runQuantum(gLR,dophisplit):
     b = QuantumRegister(Nb, 'b')
     
     # Create classical registers and measurements
-    cp = ClassicalRegister(Np0+Np1, 'cp')
+#    cp = ClassicalRegister(Np0+Np1, 'cp')
+    cp = ClassicalRegister(Np0+Np1, 'meas')
 
     qc = QuantumCircuit(p0,p1,h1,e,phi,a,b,cp)
 
@@ -179,6 +181,7 @@ def runQuantum(gLR,dophisplit):
     #qc.x(p0[0])
     #qc.h(p0[0])
 
+    #qc.barrier()
     # rotate initial state into 1/2 basis
 
     qc.cry(2*np.arcsin(-qS),p0[2],p0[0])

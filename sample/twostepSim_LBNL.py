@@ -48,7 +48,7 @@ def Phat_phi(t):
 def Delta_f(t, g):
     return math.exp(P_f(t,g))
 
-def runQuantum(gLR,dophisplit):
+def runQuantum2(gLR,dophisplit):
 
     # coupling constants
     gp = math.sqrt(abs((gL - gR)**2 + 4 * gLR * gLR ))
@@ -125,6 +125,13 @@ def runQuantum(gLR,dophisplit):
         # decide emission
         delta1 = math.sqrt(Delta_f(t_low, gA)) / math.sqrt(Delta_f(t_up, gA))
         delta2 = math.sqrt(Delta_f(t_low, gB)) / math.sqrt(Delta_f(t_up, gA))
+#        print(f'gA = {gA}')
+#        print(f'gB = {gB}')
+#        print(Delta_f(t_low, gB))
+#        print(Delta_f(t_up, gA))
+#        print(Delta_f(t_up, gB))
+#        print({math.sqrt(Delta_f(t_low, gB)) / math.sqrt(Delta_f(t_up, gA))})
+#        print({math.sqrt(Delta_f(t_low, gB)) / math.sqrt(Delta_f(t_up, gB))})        
         qc.cry(2*np.arccos(delta1),a[0],e[0])
         qc.cry(2*np.arccos(delta2),b[0],e[0])
         
@@ -155,15 +162,18 @@ def runQuantum(gLR,dophisplit):
         t_low =  eps**((1+1)/2)    
 
         # count particles
-        
+#        qc.barrier() ####
         qc.x(p0[0])
         qc.ccx(p0[0],p0[2],a[0])
         qc.x(p0[0])
         
+#        qc.barrier() ####
         qc.ccx(p0[0],p0[2],b[0])
+#        qc.barrier() ####
         
         qc.cx(p1[0],phi[0])
         
+#        qc.barrier() ####
         # decide emission
         delta_a = math.sqrt(Delta_f(t_low, gA)) / math.sqrt(Delta_f(t_up, gA))
         delta_b = math.sqrt(Delta_f(t_low, gB)) / math.sqrt(Delta_f(t_up, gB))
@@ -180,6 +190,7 @@ def runQuantum(gLR,dophisplit):
         Cn(qc,delta_aphi,2,q_a,c_aphi,e[1])
         Cn(qc,delta_b,2,q_b,c_b,e[1])
         Cn(qc,delta_bphi,2,q_b,c_bphi,e[1])
+#        qc.barrier() ####
         
         # create history
         
@@ -195,11 +206,13 @@ def runQuantum(gLR,dophisplit):
         controls_b = [1,1,1,0]
         controls_bphi = [1,1,1,1]
         
+#        qc.barrier() ####
         Cn(qc,entry_h_a,4,qcontrol1,controls_a,h2[0])
         Cn(qc,entry_h_aphi,4,qcontrol1,controls_aphi,h2[0])
         Cn(qc,entry_h_b,4,qcontrol1,controls_b,h2[0])
         Cn(qc,entry_h_bphi,4,qcontrol1,controls_bphi,h2[0])
         
+#        qc.barrier() ####
         #apply U-'s
         qc.x(p0[0])
         qc.ccx(p0[0],p0[2],a[0])
@@ -207,6 +220,7 @@ def runQuantum(gLR,dophisplit):
         qc.ccx(p0[0],p0[2],b[0])
         
         #now go over p1
+#        qc.barrier() ####
         
         entry_h_phi = 0
         qcontrol2 = [e[1],p1[0],p1[1],p1[2],h2[0]]
@@ -214,15 +228,18 @@ def runQuantum(gLR,dophisplit):
         Cn(qc,entry_h_phi,5,qcontrol2,controls_phi,h2[1])
         
         #apply U-
+#        qc.barrier() ####
         
         qc.cx(p1[0],phi[0])
         
         # adjust the particle state
+#        qc.barrier() ####
         
         # if p0 emitted
         qc.cx(h2[0],p2[0])
         
         # if p1 emitted
+#        qc.barrier() ####
         qc.cx(h2[1],p2[2])
         qc.cx(h2[1],p1[2])
         qc.cry(2*np.arccos(1/(math.sqrt(2))),h2[1],p2[1])
@@ -231,6 +248,8 @@ def runQuantum(gLR,dophisplit):
         qc.x(p2[1])
         qc.ccx(h2[1],p2[1],p1[1])
         qc.x(p2[1])
+
+        
         qc.x(p2[0])
         qc.ccx(h2[1],p2[0],p1[0])
         qc.x(p2[0])
@@ -249,9 +268,9 @@ def runQuantum(gLR,dophisplit):
     Nh1 = 1
     Nh2 = 2
     Ne = 2
-    Nphi = 2
-    Na = 2
-    Nb = 2
+    Nphi = 1
+    Na = 1
+    Nb = 1
 
     # Create a Quantum Registers and Quantum Circuit
 
@@ -267,7 +286,7 @@ def runQuantum(gLR,dophisplit):
     
     # Create classical registers and measurements
 
-    cp = ClassicalRegister(Np0+Np1+Np2, 'cp')
+    cp = ClassicalRegister(Np0+Np1+Np2, 'meas')
 
 
 
@@ -277,7 +296,7 @@ def runQuantum(gLR,dophisplit):
 
     qc.x(p0[2])
     #qc.h(p0[0])
-
+    #qc.barrier()
     # rotate initial state into 1/2 basis
 
     qc.cry(2*np.arcsin(-qS),p0[2],p0[0])
@@ -295,6 +314,7 @@ def runQuantum(gLR,dophisplit):
 
     #Measure
     #qc.barrier()
+    #qc2.barrier()
     for x in range(Np0+Np1+Np2):
         qc2.measure(x,x)
 

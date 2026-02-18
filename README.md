@@ -1,15 +1,15 @@
 # AQCEL
-AQCEL (Advancin Quantum Circuits by ICEPP and LBNL) is a python module for optimizing quantum circuits.
+AQCEL (Advancing Quantum Circuits by ICEPP and LBNL) is a Python module for optimizing quantum circuits.
 
 
 ## Circuit Optimization
-AQCEL aims to remove redundant controlled operations from controlled gates, depending on initial states of the circuit using a quantum computer.
+AQCEL aims to remove redundant controlled operations from controlled gates, depending on the initial states of the circuit using a quantum computer.
 
-The AQCEL-optimized circuit can produce equivalent final states with much smaller number of gates. Moreover, it efficiently produces a approximated quantum circuit with high fidelity by truncating low-amplitude computational basis states below certain thresholds.Our technique is useful for a wide variety of quantum algorithms, opening up new possibilities to further simplify quantum circuits to be more effective for real devices.
+The AQCEL-optimized circuit can produce equivalent final states with a much smaller number of gates. Moreover, it efficiently produces an approximated quantum circuit with high fidelity by truncating low-amplitude computational basis states below certain thresholds. Our technique is useful for a wide variety of quantum algorithms, opening up new possibilities to further simplify quantum circuits to be more effective for real devices.
 
 
 ## Getting Started
-See a [turorial](https://github.com/UTokyo-ICEPP/aqcel/blob/main/tutorial_aqcel.ipynb).
+See a [tutorial](https://github.com/UTokyo-ICEPP/aqcel/blob/main/tutorial_aqcel.ipynb).
 
 You must install qiskit=='0.32.1' for using this module. We will try update our codes for the latest version of Qiskit.
 
